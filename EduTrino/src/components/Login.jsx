@@ -29,7 +29,7 @@ const Login = () => {
     <div>
       <Navbar />
       <div className="mainDabba flex lg:flex-row flex-col lg:gap-36 gap-10 " data-aos='fade-up'>
-        <div className='textBox lg:w-[50%] w-3/4 h-[80vh] border-2 border-slate-900 mt-5  500:ml-20 mx-auto '>
+        <div className='textBox lg:w-[50%] w-3/4 h-[80vh] border-2 border-white mt-5  500:ml-20 mx-auto '>
 
           <h1 className="text-center text-3xl font-semibold my-5">Enter Your Email and Password</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +52,7 @@ const Login = () => {
                 />
                 {errors.email && <div className='warning text-red-600'>{errors.email.message}</div>}
               </div>
-              <div className="password w-[90%]">
+              <div className="password w-[90%] text-black">
                 <input
                   {...register("password", { required: true, minLength: { value: 5, message: 'More than 5' } })}
                   type={checked ? "text" : "password"}

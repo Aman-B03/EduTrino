@@ -6,7 +6,7 @@ const Leaderboard = () => {
         <div>
             <Navbar />
             <h1 className="cardHeading text-center my-8 font-semibold">Global LeaderBoard</h1>
-            <div className="headings font-semibold 500:text-[30px] text-lg 550:border-[4px] border-2 border-black md:w-[75vw] w-[95%] mx-auto p-2 flex gap-4 justify-between">
+            <div className="headings font-semibold 500:text-[30px] text-lg 550:border-[4px] border-2 border-white md:w-[75vw] w-[95%] mx-auto p-2 flex gap-4 justify-between">
                 <span className="position">Position</span>
                 <span className="name">Name</span>
                 <span className="class">Class</span>

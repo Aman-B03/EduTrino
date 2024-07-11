@@ -31,7 +31,7 @@ const SignUp = () => {
         <div>
             <Navbar />
             <div className="mainDabba flex 1400:flex-row flex-col gap-36 " data-aos='fade-up'>
-                <div className='1400:w-[30%] md:w-1/2 w-[80%] h-[80vh] border-2 border-slate-900 mt-5 md:ml-20 mx-auto '>
+                <div className='1400:w-[30%] md:w-1/2 w-[80%] h-[80vh] border-2 border-white mt-5 md:ml-20 mx-auto '>
                     <h1 className="text-center text-3xl font-semibold my-5">Create an Account</h1>
                     
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +53,7 @@ const SignUp = () => {
                                 />
                                 {errors.email && <div className='warning text-red-600'>{errors.email.message}</div>}
                             </div>
-                            <div className="password">
+                            <div className="password text-black">
                                 <input
                                     {...register("password", { required: true, minLength: { value: 5, message: 'More than 5' } })}
                                     type={checked? "text": "password"}
@@ -68,14 +68,14 @@ const SignUp = () => {
                                     {...register("name", { required: true })}
                                     placeholder='Name..'
                                     type="text"
-                                    className='border border-slate-800 rounded-xl px-4 py-1 w-2/3'
+                                    className='border text-black border-slate-800 rounded-xl px-4 py-1 w-2/3'
                                 />
                                 {errors.name && <div className='warning text-red-600'>{errors.name.message}</div>}
                             </div>
                             <div className="class">
                                 Class <select
                                     {...register("class", { required: true })}
-                                    className='px-3 py-1 w-[25%] border border-slate-800 rounded-md'
+                                    className='px-3 py-1 w-[25%] text-black border border-slate-800 rounded-md'
                                 >
                                     <option value="11">11</option>
                                     <option value="12">12</option>
@@ -90,7 +90,7 @@ const SignUp = () => {
                         <NavLink to='/login' className='text-blue-500 font-semibold text-lg'>Sign in</NavLink>
                     </div>
                     </div>
-                <div className="image">
+                <div className="image bg-white">
                     <img src={signUp} alt="Sign Up" />
                 </div>
                     

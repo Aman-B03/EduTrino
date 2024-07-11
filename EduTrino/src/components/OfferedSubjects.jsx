@@ -17,7 +17,7 @@ const OfferedSubjects = () => {
       <div className="mainContent flex flex-col gap-5" data-aos = "fade-up">
         <h1 className='cardHeading font-semibold underline underline-offset-[10px] decoration-[#5ED9E1] text-center mt-20 decoration-[6px]'>Our Offered Subjects</h1>
         <div className="subjectCards1 flex lg:flex-row flex-col gap-x-16 500:px-24 px-8 justify-between">
-          <NavLink to = '/physics'><SubjectCard image={physicsImage} subject='Physics' /></NavLink>
+          <NavLink to = '/physics'><SubjectCard image={physicsImage} subject='Physics'/></NavLink>
           <NavLink to = '/chemistry'><SubjectCard image={chemistryImage} subject='Chemistry' /></NavLink>
           <NavLink to = '/maths'><SubjectCard image={mathImage} subject='Maths' /></NavLink>
         </div>

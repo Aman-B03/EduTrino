@@ -18,6 +18,7 @@ import VP from './components/VP'
 import CN from './components/CN'
 import CT from './components/CT'
 import Leaderboard from './components/Leaderboard'
+import QuestionPaper from './components/QuestionPaper'
 
 function App() {
 
@@ -86,6 +87,11 @@ useEffect(() => {
     {
       path : "/dashboard/leaderboard",
       element : <Leaderboard/>
+    }
+    ,
+    {
+      path : "/offeredSubjects/questionPaper",
+      element : <QuestionPaper/>
     }
   ])
   

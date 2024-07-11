@@ -34,8 +34,8 @@ const Home = () => {
        <NavLink to='/offeredSubjects' className='lg:w-[30vw]'><OfferCard title = 'Have a quick practice  test .........' content = "Practice relevant and important questions from the topic you want to find your strength and weakness"/></NavLink> 
         </div>
         <div className='flex md:flex-row flex-col items-centers md:justify-center lg:gap-20 gap-5'>
-        <NavLink to='/' className='lg:w-[30vw]'> <OfferCard title ='Get Access to Sample Papers.....' content = 'Have a quick practice from the question papers of recent years and from other relevant sources for you'/></NavLink> 
-        <NavLink to='/' className='lg:w-[30vw]'><OfferCard title ='Review Your Key Areas .....' content = 'Get to know your strong points and those areas where you need more improvements.'/></NavLink> 
+        <NavLink to='/offeredSubjects/questionPaper' className='lg:w-[30vw]'> <OfferCard title ='Get Access to Sample Papers.....' content = 'Have a quick practice from the question papers of recent years and from other relevant sources for you'/></NavLink> 
+        <NavLink to='/dashboard' className='lg:w-[30vw]'><OfferCard title ='Review Your Key Areas .....' content = 'Get to know your strong points and those areas where you need more improvements.'/></NavLink> 
         </div>
       
       </div>
