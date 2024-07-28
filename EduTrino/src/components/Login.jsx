@@ -2,9 +2,16 @@ import React from 'react'
 import Navbar from './Navbar'
 import logIn from "../assets/login.png"
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import axios from 'axios'
+import { userState } from '../context/context'
+import { Navigate, useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
+
+  const value = useContext(userState);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -14,7 +21,16 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data)
+    axios.post('http://localhost:3000/signUp/login', data).then((response)=>{
+      if(response.data.error){
+        alert(response.data.error)
+      }
+      else{
+        localStorage.setItem("token", response.data)
+        value.setIsLogged(true)
+        navigate('/dashboard')
+      }
+    })
   }
 
   const [checked, setchecked] = useState(false)

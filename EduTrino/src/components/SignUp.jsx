@@ -5,9 +5,10 @@ import { NavLink } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
-
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -17,7 +18,7 @@ const SignUp = () => {
 
     const onSubmit = (data) => {
         axios.post('http://localhost:3000/signUp', data).then(()=>{
-            console.log("It worked tebayo !")
+        navigate('/login')
         })
         
     }
@@ -37,7 +38,7 @@ const SignUp = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             {isSubmitting && <div>Loading....</div>}
                             <div className='flex flex-col gap-5 md:pl-20 pl-4'>
-                            <div className="email">
+                            <div className="email text-black">
                                 <input
                                     {...register("email", {
                                         required: true,

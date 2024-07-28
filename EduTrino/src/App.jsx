@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
@@ -19,88 +19,105 @@ import CN from './components/CN'
 import CT from './components/CT'
 import Leaderboard from './components/Leaderboard'
 import QuestionPaper from './components/QuestionPaper'
-
+import { userState } from './context/context'
+import axios from 'axios'
+import Syllabus from './components/Syllabus'
 function App() {
 
 
-useEffect(() => {
-  AOS.init({
-    duration: 1500,
-    once: false,
-  });
-}, [])
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      once: false,
+    });
+  }, [])
 
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element :  <><Home/></> 
-       },
-    {
-      path : "/practice",
-      element :  <><Practice/></>
+      element: <><Home /></>
     },
     {
-      path : "/dashboard",
-      element :  <><Dashboard/></>
+      path: "/practice",
+      element: <><Practice /></>
     },
     {
-      path : "/signUp",
-      element : <SignUp/>
+      path: "/dashboard",
+      element: <><Dashboard /></>
     },
     {
-      path : "/login",
-      element :  <><Login/></>
+      path: "/signUp",
+      element: <SignUp />
     },
     {
-      path : "/offeredSubjects",
-      element : <OfferedSubjects/>
+      path: "/login",
+      element: <><Login /></>
     },
     {
-      path : "/physics",
-      element : <Physics/>
+      path: "/offeredSubjects",
+      element: <OfferedSubjects />
     },
     {
-      path : "/chemistry",
-      element : <Chemistry/>
+      path: "/physics",
+      element: <Physics />
     },
     {
-      path : "/maths",
-      element : <Maths/>
+      path: "/chemistry",
+      element: <Chemistry />
     },
     {
-      path : "/cn",
-      element : <CN/>
+      path: "/maths",
+      element: <Maths />
     },
     {
-      path : "/se",
-      element : <SE/>
+      path: "/cn",
+      element: <CN />
     },
     {
-      path : "/vp",
-      element : <VP/>
+      path: "/se",
+      element: <SE />
     },
     {
-      path : "/ct",
-      element : <CT/>
+      path: "/vp",
+      element: <VP />
     },
     {
-      path : "/dashboard/leaderboard",
-      element : <Leaderboard/>
+      path: "/ct",
+      element: <CT />
+    },
+    {
+      path: "/dashboard/leaderboard",
+      element: <Leaderboard />
     }
     ,
     {
-      path : "/offeredSubjects/questionPaper",
-      element : <QuestionPaper/>
+      path: "/offeredSubjects/questionPaper",
+      element: <QuestionPaper />
+    },
+    {
+      path: "/syllabus",
+      element: <Syllabus />
     }
   ])
+  const [isLogged, setIsLogged] = useState();
+    useEffect(()=>{
+      axios.get('http://localhost:3000/signUp/findUser', {headers:{token : localStorage.getItem("token")}}).then((response)=>{
+        if(!response.error){
+          console.log("is logged is true")
+           setIsLogged(true)
+        }else{
+          console.log("islogged is false")
+          setIsLogged(false)
+        }
+      })
+    },[])
   
-
   return (
     <div>
-      
-      <RouterProvider router={router}/>
-
+      <userState.Provider value = {{isLogged, setIsLogged}}>
+        <RouterProvider router={router} />
+      </userState.Provider>
     </div>
   )
 }

@@ -30,7 +30,7 @@ const Home = () => {
       <h1 className='text-center cardHeading font-semibold mt-[15vh] underline decoration-[#5ED9E1] decoration-4 underline-offset-8'>What We Offer...</h1>
       <div className="cards flex flex-col justify-center md:gap-32 gap-8 my-24 mx-12 " data-aos="fade-up">
        <div className='flex md:flex-row flex-col items-centers md:justify-center lg:gap-20 gap-5'>
-       <NavLink to='/' className='lg:w-[30vw]'><OfferCard title='Get Up-to-Date Syllabus....' content="Watch out the syllabus of each subjectsto prepare accordingly for the examination " /></NavLink> 
+       <NavLink to='/syllabus' className='lg:w-[30vw]'><OfferCard title='Get Up-to-Date Syllabus....' content="Watch out the syllabus of each subjectsto prepare accordingly for the examination " /></NavLink> 
        <NavLink to='/offeredSubjects' className='lg:w-[30vw]'><OfferCard title = 'Have a quick practice  test .........' content = "Practice relevant and important questions from the topic you want to find your strength and weakness"/></NavLink> 
         </div>
         <div className='flex md:flex-row flex-col items-centers md:justify-center lg:gap-20 gap-5'>
