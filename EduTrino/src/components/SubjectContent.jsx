@@ -14,7 +14,7 @@ const SubjectContent = (props) => {
       {props.chapters.map((item,  index) => {
         return (
           <React.Fragment key = {index}> 
-      <NavLink to = {`/${item.toLowerCase().replace(' ', '-')}Practice`}><span className='each-chapter'>{item}</span></NavLink>
+      <NavLink to = {`/${item.toLowerCase().replaceAll(' ', '-')}`}><span className='each-chapter'>{item}</span></NavLink>
         <UnderlineDiv/>
         </React.Fragment>
         )

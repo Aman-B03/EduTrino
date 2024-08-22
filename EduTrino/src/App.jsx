@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
-import Practice from './components/Practice'
 import Home from './components/Home'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -22,6 +21,24 @@ import QuestionPaper from './components/QuestionPaper'
 import { userState } from './context/context'
 import axios from 'axios'
 import Syllabus from './components/Syllabus'
+import RotationalDynamics from './PhysicsChapters/RotationalDynamics'
+import ShowSummary from './components/ShowSummary'
+import SimpleHarmonicMotion from './PhysicsChapters/SimpleHarmonicMotion'
+import FluidStatic from './PhysicsChapters/FluidStatic'
+import FirstLawOfThermo from './PhysicsChapters/FirstLawOfThermo'
+import WaveMotion from './PhysicsChapters/WaveMotion'
+import WavesInPipeAndString from './PhysicsChapters/WavesInPipeAndString'
+import AcuosticPhenomenon from './PhysicsChapters/AcuosticPhenomenon'
+import WaveNatureOfLight from './PhysicsChapters/WaveNatureOfLight'
+import ElectricalCircuits from './PhysicsChapters/ElectricalCircuits'
+import MagneticProperty from './PhysicsChapters/MagneticProperty'
+import MagneticField from './PhysicsChapters/MagneticField'
+import AlternatingCurrent from './PhysicsChapters/AlternatingCurrent'
+import Electrons from './PhysicsChapters/Electrons'
+import Photons from './PhysicsChapters/Photons'
+import Semiconductors from './PhysicsChapters/Semiconductors'
+import Quantization from './PhysicsChapters/Quantization'
+
 function App() {
 
 
@@ -38,10 +55,7 @@ function App() {
       path: "/",
       element: <><Home /></>
     },
-    {
-      path: "/practice",
-      element: <><Practice /></>
-    },
+    
     {
       path: "/dashboard",
       element: <><Dashboard /></>
@@ -94,11 +108,80 @@ function App() {
     {
       path: "/offeredSubjects/questionPaper",
       element: <QuestionPaper />
+    }, 
+    {
+      path : "/showSummary",
+      element : <ShowSummary/>
     },
     {
       path: "/syllabus",
       element: <Syllabus />
-    }
+    },
+    {
+      path : "/rotational-dynamics",
+      element : <RotationalDynamics/>
+    },
+    {
+      path : "/simple-harmonic-motion",
+      element : <SimpleHarmonicMotion/>
+    },
+   
+    {
+      path  : "/fluid-static",
+      element : <FluidStatic/>
+    },
+    {
+      path  : "/first-law-of-thermodynamics",
+      element : <FirstLawOfThermo/>
+    },
+    {
+      path  : "/wave-motion",
+      element : <WaveMotion/>
+    },
+    {
+      path  : "/waves-in-pipes-and-strings",
+      element : <WavesInPipeAndString/>
+    },
+    {
+      path  : "/acuostic-phenomenon",
+      element : <AcuosticPhenomenon/>
+    },
+    {
+      path  : "/wave-nature-of-light",
+      element : <WaveNatureOfLight/>
+    },
+    {
+      path  : "/electrical-circuits",
+      element : <ElectricalCircuits/>
+    },
+    {
+      path  : "/magnetic-properties-of-materials",
+      element : <MagneticProperty/>
+    },
+    {
+      path  : "/magnetic-field",
+      element : <MagneticField/>
+    },
+    {
+      path  : "/alternating-current",
+      element : <AlternatingCurrent/>
+    },
+    {
+      path  : "/electrons",
+      element : <Electrons/>
+    },
+    {
+      path  : "/photons",
+      element : <Photons/>
+    },
+    {
+      path  : "/semiconductor-devices",
+      element : <Semiconductors/>
+    },
+    {
+      path  : "/quantization-of-energy",
+      element : <Quantization/>
+    },
   ])
   const [isLogged, setIsLogged] = useState();
     useEffect(()=>{

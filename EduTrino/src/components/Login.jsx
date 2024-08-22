@@ -64,7 +64,7 @@ const Login = () => {
                   })}
                   type="text"
                   placeholder='Gmail...'
-                  className='border border-slate-800 rounded-xl px-4 py-1 w-[100%]'
+                  className='border text-black border-slate-800 rounded-xl px-4 py-1 w-[100%]'
                 />
                 {errors.email && <div className='warning text-red-600'>{errors.email.message}</div>}
               </div>

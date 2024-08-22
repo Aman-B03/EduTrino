@@ -12,7 +12,6 @@ const Physics = () => {
           "Fluid Static",
           "First Law Of Thermodynamics",
           "Wave Motion",
-          "Mechanical Waves",
           "Waves in Pipes and Strings",
           "Acuostic Phenomenon",
           "Wave Nature of Light",

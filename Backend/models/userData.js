@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         class: {
             type: DataTypes.STRING, // Changed to STRING for simplicity
             allowNull: false
+        },
+        score : {
+            type : DataTypes.INTEGER,
+            allowNull : true
         }
     });
     return userData;

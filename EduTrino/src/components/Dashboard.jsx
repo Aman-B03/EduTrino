@@ -10,7 +10,10 @@ import { useNavigate } from 'react-router-dom'
 
 
 
+
+
 const Dashboard = () => {
+  const [displayScore, setDisplayScore] = useState(0);
   const [subjects, setsubjects] = useState(["Physics", "Chemistry", "Maths", "SE", "CN", "CT", "VP"]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +26,13 @@ const Dashboard = () => {
       setEmail(response.data.email);
     })
   }, [value.isLogged])
+
+  useEffect(()=>{
+    axios.get('http://localhost:3000/score',{ headers: { token: localStorage.getItem("token") } } ).then((response)=>{
+      console.log("score to display : ", response.data)
+      setDisplayScore(response.data)
+    })
+  },[])
 
 
 
@@ -53,7 +63,7 @@ const Dashboard = () => {
             <div className="score flex flex-col gap-4 md:mr-[10vw] 650:ml-0 ml-[10vw]">
               <div className="dattebayo">
                 <span className='text-2xl'>Score </span>
-                <span className='bg-[#f3f8fb] border-2 border-white text-xl text-black h-10 px-3 rounded-lg'> 00 </span>
+                <span className='bg-[#f3f8fb] border-2 border-white text-xl text-black h-10 px-3 rounded-lg'> {displayScore} </span>
               </div>
               <button onClick={logOut} className="logOut bg-blue-500 text-white px-2 h-10 w-40 font-semibold border-2 border-black rounded-xl">LogOut</button>
             </div>

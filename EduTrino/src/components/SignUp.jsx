@@ -17,8 +17,13 @@ const SignUp = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        axios.post('http://localhost:3000/signUp', data).then(()=>{
-        navigate('/login')
+        axios.post('http://localhost:3000/signUp', data).then((response)=>{
+        if(response.data.error){
+            alert(response.data.error)
+        }else{
+            navigate('/login')
+        }
+        
         })
         
     }

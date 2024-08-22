@@ -11,13 +11,22 @@ router.get('/', async (req, res)=>{
 
 router.post('/', async (req, res) => {
     let post = await req.body;
-    await userData.create(post);
-    res.send(post)
+    const allData = await userData.findAll();
+    const isAlreadyPresent = allData.some(item =>{
+        return (item.dataValues.email == post.email)
+    });
+   
+    if(!isAlreadyPresent){
+        await userData.create(post);
+        res.send(post)
+    }else{
+        res.json({error: " An account already exist with this email, please choose another one !"})
+    }
+   
 })
 
 router.post('/login', async(req, res)=>{
     const data = await req.body;
-    console.log("Is errror down this at findOne "+ data)
     const isPresent = await userData.findOne({where : {
         email : data.email
     }});
@@ -26,7 +35,6 @@ router.post('/login', async(req, res)=>{
     }
     else{
         if(data.password === isPresent.password){
-            console.log("is error down this at sign function ")
             const token = sign({email : isPresent.email, name : isPresent.name}, "home")
             res.send(token)
         }
