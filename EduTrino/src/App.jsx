@@ -38,6 +38,11 @@ import Electrons from './PhysicsChapters/Electrons'
 import Photons from './PhysicsChapters/Photons'
 import Semiconductors from './PhysicsChapters/Semiconductors'
 import Quantization from './PhysicsChapters/Quantization'
+import Haloalkanes from './ChemistryChapters.jsx/Haloalkanes'
+import Alcohols from './ChemistryChapters.jsx/Alcohols'
+import Phenols from './ChemistryChapters.jsx/Phenols'
+import AldehydesAndKetones from './ChemistryChapters.jsx/AldehydesAndKetones'
+import PhysicsReview from './ReviewAll/PhysicsReview'
 
 function App() {
 
@@ -181,6 +186,26 @@ function App() {
     {
       path  : "/quantization-of-energy",
       element : <Quantization/>
+    },
+    {
+      path  : "/haloalkanes",
+      element : <Haloalkanes/>
+    },
+    {
+      path  : "/alcohols",
+      element : <Alcohols/>
+    },
+    {
+      path  : "/phenols",
+      element : <Phenols/>
+    },
+    {
+      path  : "/aliphatic-aldehydes-and-ketones",
+      element : <AldehydesAndKetones/>
+    },
+    {
+      path  : "/dashboard/physicsReview",
+      element : <PhysicsReview/>
     },
   ])
   const [isLogged, setIsLogged] = useState();

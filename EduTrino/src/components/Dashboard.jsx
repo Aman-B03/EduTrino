@@ -77,7 +77,7 @@ const Dashboard = () => {
           {subjects.map((item, index) => {
             return (
               <React.Fragment key={index}>
-                <NavLink to={`/${item.toLowerCase()}Review`}><div className='lg:w-[20vw] md:w-[25vw] w-[40vw] h-[15vh] border-[4px] getShadow border-[#8c8a8a] rounded-lg cardHeading text-center' > {item} </div></NavLink>
+                <NavLink to={`/dashboard/${item.toLowerCase()}Review`}><div className='lg:w-[20vw] md:w-[25vw] w-[40vw] h-[15vh] border-[4px] getShadow border-[#8c8a8a] rounded-lg cardHeading text-center' > {item} </div></NavLink>
               </React.Fragment>
             )
           })}

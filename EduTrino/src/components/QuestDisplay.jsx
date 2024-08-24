@@ -35,7 +35,7 @@ const QuestDisplay = (props) => {
         setIstheory(false)
 
     }
-    const resetAll = ()=>{
+    const resetAll = () => {
         setIsAnswered(false);
         setIsCorrect(false);
         setBtn("Check");
@@ -70,7 +70,7 @@ const QuestDisplay = (props) => {
         props.question[questIndex].options.forEach(element => {
             if (element == props.question[questIndex].correct) {
                 updateStyle[element] = 'border-2 border-green-600';
-                
+
             }
             else if (element == SelectedOption) {
                 updateStyle[element] = 'border-2 border-red-600';
@@ -81,8 +81,8 @@ const QuestDisplay = (props) => {
 
         });
         setOptionStyle(updateStyle);
-        if(SelectedOption == props.question[questIndex].correct){
-            setCorrectAnswer(correctAnswer+1)
+        if (SelectedOption == props.question[questIndex].correct) {
+            setCorrectAnswer(correctAnswer + 1)
         }
 
     }
@@ -95,14 +95,47 @@ const QuestDisplay = (props) => {
 
     };
 
-    const clickSubmit = (MyScore)=>{
+    let title = props.title;
+
+    const clickSubmit = (MyScore, mastery) => {
         const scoreData = {
-                score : MyScore
+            score: MyScore
         }
         console.log("Score data array  : ", scoreData)
-        axios.post('http://localhost:3000/score', scoreData, {headers : {token : localStorage.getItem("token")}}).then((response)=>{
+        axios.post('http://localhost:3000/score', scoreData, { headers: { token: localStorage.getItem("token") } }).then((response) => {
             console.log("After posting score : ", response.data)
         });
+
+        let sub = title.split('-')[1].toLowerCase().replace(/[^a-z0-9]/g, '');
+        const subjectScore = {
+            userId: 1,
+            mastery : mastery,
+            chapter : sub
+        }
+
+        axios.post(`http://localhost:3000/score/post${props.sub}Score`, subjectScore, { headers: { token: localStorage.getItem("token") } }).then((response)=>{
+            console.log(response.data)
+        })
+        // if(props.sub == "Physics"){
+        //     axios.post()
+
+        // }else if(props.sub == "Chemistry"){
+
+        // }else if(props.sub == "Maths"){
+
+        // }else if(props.sub == "SE"){
+
+        // }else if(props.sub == "VP"){
+
+        // }else if(props.sub == "CT"){
+
+        // }else if(props.sub == "CN"){
+
+        // }else{
+        //     console.log(" NO SUBJECT MATCHED !")
+        // }
+
+
         setQuestIndex(0)
         resetAll();
         setIsSummary(true)
@@ -114,13 +147,13 @@ const QuestDisplay = (props) => {
         // console.log(optionStyle[item] + "value of optionStyle[item] ")
     }
 
-    const goBack = ()=>{
+    const goBack = () => {
         window.location.reload();
     }
 
-    let percent = Math.floor(correctAnswer*100/props.question.length);
+    let percent = Math.floor(correctAnswer * 100 / props.question.length);
 
-    const midCheck = correctAnswer*100/props.question.length >= 40 && correctAnswer*100/props.question.length <= 90;
+    const midCheck = correctAnswer * 100 / props.question.length >= 40 && correctAnswer * 100 / props.question.length <= 90;
     return (
         <div className='w-full min-h-[100vh] bg-slate-100'>
             <h1 className='cardHeading text-center py-3 mb-3 bg-green-800 text-white font-semibold'>{props.title}</h1>
@@ -143,89 +176,89 @@ const QuestDisplay = (props) => {
                     <Div />
                 </div>
 
-                <div className={`${isSummary&&!istheory && 'hidden' } questionField`}>
+                <div className={`${isSummary && !istheory && 'hidden'} questionField`}>
 
-                {!istheory ? (
-                    <div className="mt-[-10px] pt-5 flex justify-center questionBox p-6 border-l-2 border-gray-300 bg-yellow-50 text-black w-full min-h-[80vh] md:w-[calc(100vw-400px)]">
-                        <div className="wrapquestions flex flex-col">
-                            {/* <div className="question cardContent">{props.question[questIndex].question}</div> */}
-                            <div className="question cardContent" dangerouslySetInnerHTML={{__html : props.question[questIndex].question}} ></div>
-                            <Div />
-                            <div className="options flex flex-col mt-7">
+                    {!istheory ? (
+                        <div className="mt-[-10px] pt-5 flex justify-center questionBox p-6 border-l-2 border-gray-300 bg-yellow-50 text-black w-full min-h-[80vh] md:w-[calc(100vw-400px)]">
+                            <div className="wrapquestions flex flex-col">
+                                {/* <div className="question cardContent">{props.question[questIndex].question}</div> */}
+                                <div className="question cardContent" dangerouslySetInnerHTML={{ __html: props.question[questIndex].question }} ></div>
+                                <Div />
+                                <div className="options flex flex-col mt-7">
 
-                                {props.question[questIndex].options.map((item, index) => {
-                                    // useEffect(() => {
-                                    //     setBorderStyle(item);
-                                    // },[optionStyle])
-                                    if (JSON.stringify(optionStyle) != JSON.stringify(prevOptionStyle)) {
-                                        setBorderStyle(item);
-                                        setPrevOptionStyle({ ...optionStyle })
+                                    {props.question[questIndex].options.map((item, index) => {
+                                        // useEffect(() => {
+                                        //     setBorderStyle(item);
+                                        // },[optionStyle])
+                                        if (JSON.stringify(optionStyle) != JSON.stringify(prevOptionStyle)) {
+                                            setBorderStyle(item);
+                                            setPrevOptionStyle({ ...optionStyle })
+                                        }
+
+
+                                        return (
+                                            <React.Fragment key={props.question[questIndex].id}>
+                                                {console.log(optionStyle[item])}
+                                                <div className={`rounded-xl ${optionStyle[item]} optconent flex gap-5 pl-2`}>
+                                                    <input type="radio" onChange={handleOptionChange} value={item} checked={SelectedOption == item} name="option" id={`option-${index}`} className='py-1 custom-radio mt-3 w-[20px]' />
+                                                    <label htmlFor={`option-${index}`} className="p-1 opt mt-3" dangerouslySetInnerHTML={{ __html: item }}></label>
+                                                </div>
+                                                <Div />
+                                            </React.Fragment>
+                                        )
+                                    })}
+
+
+
+                                </div>
+                                <div className={`explain mt-5 ${!isAnswered && 'hidden'}`}>
+                                    {SelectedOption != props.question[questIndex].correct ? (<span className="correctanswer my-4 text-lg text-green-800">Correct answer is <span dangerouslySetInnerHTML={{ __html: props.question[questIndex].correct }}></span></span>)
+                                        : (<span className="correctanswer my-4 text-lg text-green-800"> Correct option selected, <span dangerouslySetInnerHTML={{ __html: props.question[questIndex].correct }}></span> </span>)
                                     }
-
-
-                                    return (
-                                        <React.Fragment key={props.question[questIndex].id}>
-                                            {console.log(optionStyle[item])}
-                                            <div className={`rounded-xl ${optionStyle[item]} optconent flex gap-5 pl-2`}>
-                                                <input type="radio" onChange={handleOptionChange} value={item} checked={SelectedOption == item} name="option" id={`option-${index}`} className='py-1 custom-radio mt-3 w-[20px]' />
-                                                <label htmlFor={`option-${index}`} className="p-1 opt mt-3" dangerouslySetInnerHTML={{__html: item}}></label>
-                                            </div>
-                                            <Div />
-                                        </React.Fragment>
-                                    )
-                                })}
-
-
+                                    <p className='mb-2 text-green-600 text-xl font-semibold'>Explanation : </p>
+                                    <p dangerouslySetInnerHTML={{ __html: props.question[questIndex].explain }}></p>
+                                </div>
+                                <div className="border-2 py-3 rounded-xl border-gray-200 buttons mt-12 flex gap-5 justify-center">
+                                    <button disabled={!SelectedOption == "" || questIndex + 1 == props.question.length} className="skip bg-slate-200 text-black font-semibold text-xl px-5 py-1 rounded-sm disabled:text-slate-600" onClick={clickSkip}> Skip </button>
+                                    <button disabled={SelectedOption == ""} className="next bg-blue-600 text-white font-semibold text-xl px-5 py-1 rounded-sm disabled:bg-blue-200" onClick={() => {
+                                        if (btn == "Check") {
+                                            clickCheck()
+                                        } else if (btn == "Next") {
+                                            clickNext()
+                                        }
+                                        else {
+                                            clickSubmit(correctAnswer, percent)
+                                        }
+                                    }}> {btn} </button>
+                                </div>
 
                             </div>
-                            <div className={`explain mt-5 ${!isAnswered && 'hidden'}`}>
-                                {SelectedOption != props.question[questIndex].correct ? (<span className="correctanswer my-4 text-lg text-green-800">Correct answer is <span dangerouslySetInnerHTML={{__html: props.question[questIndex].correct}}></span></span>)
-                                    : (<span className="correctanswer my-4 text-lg text-green-800"> Correct option selected, <span dangerouslySetInnerHTML={{__html: props.question[questIndex].correct}}></span> </span>)
-                                }
-                                <p className='mb-2 text-green-600 text-xl font-semibold'>Explanation : </p>
-                                <p dangerouslySetInnerHTML={{__html: props.question[questIndex].explain}}></p>
-                            </div>
-                            <div className="border-2 py-3 rounded-xl border-gray-200 buttons mt-12 flex gap-5 justify-center">
-                                <button disabled={!SelectedOption == "" || questIndex+1 == props.question.length} className="skip bg-slate-200 text-black font-semibold text-xl px-5 py-1 rounded-sm disabled:text-slate-600" onClick={clickSkip}> Skip </button>
-                                <button disabled={SelectedOption == ""} className="next bg-blue-600 text-white font-semibold text-xl px-5 py-1 rounded-sm disabled:bg-blue-200" onClick={()=>{
-                                    if(btn == "Check"){
-                                        clickCheck()
-                                    }else if(btn == "Next"){
-                                        clickNext()
-                                    }
-                                    else{
-                                        clickSubmit(correctAnswer)
-                                    }
-                                }}> {btn} </button>
-                            </div>
-
                         </div>
-                    </div>
-                ) : (
-                    <div className="mt-[-10px] pt-5 px-10 theorySection flex gap-6 flex-col items-center border-l-2 border-gray-300 bg-yellow-50 text-black w-full overflow-auto h-[85vh] md:w-[calc(100vw-400px)]">
-                       { props.subjective.map((item, index)=>{
-                        return(
-                            <div key ={index} className='flex flex-col gap-6' >
-                              <div className="quest flex gap-2 font-semibold text-xl text-green-800"><span>{item.no}</span> <div dangerouslySetInnerHTML={{__html : item.question}}></div></div> 
-                              <div className='text-lg' dangerouslySetInnerHTML={{__html : item.answer}}></div>
-                              <Div />
-                            </div>
-                        )
-                        })}
-                    </div>
-                )
-                }
+                    ) : (
+                        <div className="mt-[-10px] pt-5 px-10 theorySection flex gap-6 flex-col items-center border-l-2 border-gray-300 bg-yellow-50 text-black w-full overflow-auto h-[85vh] md:w-[calc(100vw-400px)]">
+                            {props.subjective.map((item, index) => {
+                                return (
+                                    <div key={index} className='flex flex-col gap-6' >
+                                        <div className="quest flex gap-2 font-semibold text-xl text-green-800"><span>{item.no}</span> <div dangerouslySetInnerHTML={{ __html: item.question }}></div></div>
+                                        <div className='text-lg' dangerouslySetInnerHTML={{ __html: item.answer }}></div>
+                                        <Div />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )
+                    }
                 </div>
                 <div className={`${!isSummary && 'hidden'} ${istheory && 'hidden'} mt-[-10px] pt-5 flex flex-col  p-6 border-l-2 border-gray-300 bg-yellow-50 text-black w-full min-h-[80vh] md:w-[calc(100vw-400px)]`}>
                     <div className="flex gap-3 mb-8">
                         <NavLink to='/offeredSubjects' className="Practicegoto hover:text-blue-400 cursor-pointer"> &gt;&gt; Practice</NavLink>
                         <NavLink to={`/${props.sub.toLowerCase()}`} className="physicsgoto hover:text-blue-400 cursor-pointer"> &gt;&gt; {props.sub}</NavLink>
                     </div>
-                    <Div/>
+                    <Div />
                     <p className='cardContent'> Chapter Mastery : {percent}%</p>
-                    <Div/>
+                    <Div />
                     <div className="flex summaryContent justify-center items-center flex-col gap-5 bg-green-950 w-full min-h-[50vh] text-white mt-20 rounded-lg p-5">
-                        
+
                         <span className={` gap-3 ${percent < 40 ? 'flex' : 'hidden'}`}><img className='w-[70px]' src={motive} alt="picture" /><p className="mt-3 motive text-white cardHeading font-semibold">Don't Let Your Spirit Down! </p></span>
                         <span className={` gap-3 ${midCheck ? 'flex' : 'hidden'}`}><img className='w-[70px]' src={motive} alt="picture" /><p className="mt-3 motive text-white cardHeading font-semibold">Good, But You Have got More </p></span>
                         <span className={` gap-3 ${percent > 90 ? 'flex' : 'hidden'}`}><img className='w-[70px]' src={motive} alt="picture" /><p className="mt-3 motive text-white cardHeading font-semibold">Excellent, Way to Go </p></span>

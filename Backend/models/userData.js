@@ -21,5 +21,37 @@ module.exports = (sequelize, DataTypes) => {
             allowNull : true
         }
     });
+
+    userData.associate = (models)=>{
+        userData.hasOne(models.physicsReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+        userData.hasOne(models.chemistryReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+        userData.hasOne(models.mathsReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+        userData.hasOne(models.seReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+        userData.hasOne(models.vpReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+        userData.hasOne(models.cnReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+        userData.hasOne(models.ctReview, {
+            foreignKey : 'userId',
+            onDelete : 'cascade'
+        });
+
+    }
     return userData;
 };

@@ -5,7 +5,7 @@ const VP = () => {
   return (
     <div>
       <SubjectContent subject = "Visual Programming" chapters = {[
-        "Introduction to C# .NET",
+        "Introduction to C sharp dot NET",
         "Control Statements",
         "Arrays",
         "Strings",

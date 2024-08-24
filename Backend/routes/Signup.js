@@ -35,7 +35,7 @@ router.post('/login', async(req, res)=>{
     }
     else{
         if(data.password === isPresent.password){
-            const token = sign({email : isPresent.email, name : isPresent.name}, "home")
+            const token = sign({email : isPresent.email, name : isPresent.name, id: isPresent.id}, "home")
             res.send(token)
         }
         else{
