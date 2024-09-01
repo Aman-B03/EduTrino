@@ -126,7 +126,7 @@ const AlternatingCurrent = () => {
 
   return (
     <React.Fragment>
-        <QuestDisplay title = "Physics - Rotational Dynamics" question = {questionArray} subjective = {subjective} sub = "Physics" />
+        <QuestDisplay title = "Physics - Alternating Current" question = {questionArray} subjective = {subjective} sub = "Physics" />
     </React.Fragment>
   )
 }

@@ -39,7 +39,7 @@ const Quantization = () => {
 
     return (
         <React.Fragment>
-            <QuestDisplay title="Physics - Rotational Dynamics" question={questionArray} subjective={subjective} sub="Physics" />
+            <QuestDisplay title="Physics - Quantization of Energy" question={questionArray} subjective={subjective} sub="Physics" />
         </React.Fragment>
     )
 }

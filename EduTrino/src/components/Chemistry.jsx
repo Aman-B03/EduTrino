@@ -11,7 +11,6 @@ const Chemistry = () => {
     "Alcohols",
     "Phenols",
     "Aliphatic aldehydes and ketones",
-    "Chemistry of Metals",
     "Studies of Heavy Metals",
     "Volumetric Analysis",
     "Ionic Equilibrium",

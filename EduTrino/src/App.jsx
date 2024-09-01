@@ -43,6 +43,16 @@ import Alcohols from './ChemistryChapters.jsx/Alcohols'
 import Phenols from './ChemistryChapters.jsx/Phenols'
 import AldehydesAndKetones from './ChemistryChapters.jsx/AldehydesAndKetones'
 import PhysicsReview from './ReviewAll/PhysicsReview'
+import HeavyMetals from './ChemistryChapters.jsx/HeavyMetals'
+import VolumetricAnalysis from './ChemistryChapters.jsx/VolumetricAnalysis'
+import IonicEquilibrium from './ChemistryChapters.jsx/IonicEquilibrium'
+import ChemicalKinetics from './ChemistryChapters.jsx/ChemicalKinetics'
+import Thermodynamics from './ChemistryChapters.jsx/Thermodynamics'
+import Electrochemistry from './ChemistryChapters.jsx/Electrochemistry'
+import ChemistryMankind from './ChemistryChapters.jsx/ChemistryMankind'
+import NuclearChemistry from './ChemistryChapters.jsx/NuclearChemistry'
+import ChemistryReview from './ReviewAll/ChemistryReview'
+import PermutationCombination from './MathsChapters/PermutationCombination'
 
 function App() {
 
@@ -204,8 +214,48 @@ function App() {
       element : <AldehydesAndKetones/>
     },
     {
+      path  : "/studies-of-heavy-metals",
+      element : <HeavyMetals/>
+    },
+    {
+      path  : "/volumetric-analysis",
+      element : <VolumetricAnalysis/>
+    },
+    {
+      path  : "/ionic-equilibrium",
+      element : <IonicEquilibrium/>
+    },
+    {
+      path  : "/chemical-kinetics",
+      element : <ChemicalKinetics/>
+    },
+    {
+      path  : "/thermodynamics",
+      element : <Thermodynamics/>
+    },
+    {
+      path  : "/electrochemistry",
+      element : <Electrochemistry/>
+    },
+    {
+      path  : "/chemistry-in-the-service-of-mankind",
+      element : <ChemistryMankind/>
+    },
+    {
+      path  : "/nuclear-chemistry-and-applications-of-radioactivity",
+      element : <NuclearChemistry/>
+    },
+    {
+      path  : "/permutation-and-combination",
+      element : <PermutationCombination/>
+    },
+    {
       path  : "/dashboard/physicsReview",
       element : <PhysicsReview/>
+    },
+    {
+      path  : "/dashboard/chemistryReview",
+      element : <ChemistryReview/>
     },
   ])
   const [isLogged, setIsLogged] = useState();

@@ -13,17 +13,34 @@ const {ctReview} = require('../models');
 
 router.get('/physics',validateToken, async (req, res)=>{
     const data = await physicsReview.findOne({where : {userId : req.user.id}});
+    if(!data){
+        res.json({"error" : " You First Need to Take a Practice test before being able to review the subject !! "});
+    }else{
     const newObject = {};
+    console.log("Data : ",data)
     for(const[key, value] of Object.entries(data.dataValues)){
         if(value != null){
             newObject[key] = value
         }
     }
     res.json(newObject)
+}
 
 });
 router.get('/chemistry',validateToken, async (req, res)=>{
-
+    const data = await chemistryReview.findOne({where : {userId : req.user.id}});
+    if(!data){
+        res.json({"error" : " You First Need to Take a Practice test before being able to review the subject !! "});
+    }else{
+    const newObject = {};
+    console.log("Data : ",data)
+    for(const[key, value] of Object.entries(data.dataValues)){
+        if(value != null){
+            newObject[key] = value
+        }
+    }
+    res.json(newObject)
+}
 });
 router.get('/maths',validateToken, async (req, res)=>{
 

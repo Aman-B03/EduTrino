@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Navbar from './Navbar'
+import { useNavigate } from 'react-router-dom'
 
 const Review = (props) => {
-
+  const navigate = useNavigate();
   const [reviewSubjects, setReviewSubjects] = useState([]);
   // const [strongSubjects, setStrongSubjects] = useState({});
   // const [weakSubjects, setWeakSubjects] = useState({});
@@ -16,10 +17,16 @@ const Review = (props) => {
 
   useEffect(()=>{
      axios.get(`http://localhost:3000/getReview/${props.subject.toLowerCase()}`, {headers : {token : localStorage.getItem("token")}}).then((response)=>{
+      if(response.data.error){
+        alert(response.data.error);
+        navigate('/offeredSubjects')
+      }else{
         let randArray = Object.entries(response.data);
         jugad =  randArray.slice(1,-3)
         setReviewSubjects(jugad);
+      }
      })
+    
 
   },[])
  
@@ -55,7 +62,7 @@ const Review = (props) => {
             {
               strongChapters.map((item, index)=>{
                 return(
-                  <div className="text-xl mt-4 flex justify-between px-5 w-full"> <span>{item}</span> <span> {strongChaptersMastery[index]}%</span></div>
+                  <div className="text-xl mt-4 flex justify-between px-5 w-full"> <div className='w-[75%] break-words'>{item}</div> <div className='w-[15%]'> {strongChaptersMastery[index]}%</div></div>
                 )
               })
             }
@@ -68,7 +75,7 @@ const Review = (props) => {
             {
               weakChapters.map((item, index)=>{
                 return(
-                  <div className="text-xl mt-4 flex justify-between px-5 w-full"> <span>{item}</span> <span> {weakChaptersMastery[index]}%</span></div>
+                  <div className="text-xl mt-4 flex justify-between px-5 w-full"> <div className='w-[75%] break-words'>{item}</div> <span> {weakChaptersMastery[index]}%</span></div>
                 )
               })
             }

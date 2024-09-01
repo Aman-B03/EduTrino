@@ -96,7 +96,7 @@ const FirstLawOfThermo = () => {
 
   return (
     <React.Fragment>
-        <QuestDisplay title = "Physics - Frist Law of Thermo.." question = {questionArray} subjective = {subjective} sub = "Physics" />
+        <QuestDisplay title = "Physics - Frist Law of Thermodynamics" question = {questionArray} subjective = {subjective} sub = "Physics" />
     </React.Fragment>
   )
 }

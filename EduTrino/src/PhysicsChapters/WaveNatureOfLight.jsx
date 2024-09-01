@@ -84,7 +84,7 @@ const WaveNatureOfLight = () => {
 
   return (
     <React.Fragment>
-    <QuestDisplay title = "Physics - Rotational Dynamics" question = {questionArray} subjective = {subjective} sub = "Physics" />
+    <QuestDisplay title = "Physics - Wave Nature of Light" question = {questionArray} subjective = {subjective} sub = "Physics" />
 </React.Fragment>
   )
 }

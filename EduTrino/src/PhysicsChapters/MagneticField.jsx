@@ -83,7 +83,7 @@ const MagneticField = () => {
 
   return (
     <React.Fragment>
-    <QuestDisplay title = "Physics - Rotational Dynamics" question = {questionArray} subjective = {subjective} sub = "Physics" />
+    <QuestDisplay title = "Physics - Magnetic field" question = {questionArray} subjective = {subjective} sub = "Physics" />
 </React.Fragment>
   )
 }

@@ -136,7 +136,7 @@ const ElectricalCircuits = () => {
 
   return (
     <React.Fragment>
-    <QuestDisplay title = "Physics - Rotational Dynamics" question = {questionArray} subjective = {subjective} sub = "Physics" />
+    <QuestDisplay title = "Physics - Electrical Circuits" question = {questionArray} subjective = {subjective} sub = "Physics" />
 </React.Fragment>
   )
 }
