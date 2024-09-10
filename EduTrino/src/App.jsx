@@ -53,6 +53,24 @@ import ChemistryMankind from './ChemistryChapters.jsx/ChemistryMankind'
 import NuclearChemistry from './ChemistryChapters.jsx/NuclearChemistry'
 import ChemistryReview from './ReviewAll/ChemistryReview'
 import PermutationCombination from './MathsChapters/PermutationCombination'
+import BinomialTheorm from './MathsChapters/BinomialTheorm'
+import IntroductionCN from './CNchapters/IntroductionCN'
+import NetworkType from './CNchapters/NetworkType'
+import NetworkingDevices from './CNchapters/NetworkingDevices'
+import DevicesAndTransmission from './CNchapters/DevicesAndTransmission'
+import NetworkArchitecture from './CNchapters/NetworkArchitecture'
+import ReferenceModel from './CNchapters/ReferenceModel'
+import WorkgroupComputing from './CNchapters/WorkgroupComputing'
+import NetworkSecurity from './CNchapters/NetworkSecurity'
+import CNReview from './ReviewAll/CNReview'
+import IntroductionCT from './CTchapters/IntroductionCT'
+import ECommerce from './CTchapters/ECommerce'
+import EGovernance from './CTchapters/EGovernance'
+import CloudIOT from './CTchapters/CloudIOT'
+import AI from './CTchapters/AI'
+import Multimedia from './CTchapters/Multimedia'
+import BigData from './CTchapters/BigData'
+import CTReview from './ReviewAll/CTReview'
 
 function App() {
 
@@ -250,12 +268,84 @@ function App() {
       element : <PermutationCombination/>
     },
     {
+      path  : "/binomial-theorem",
+      element : <BinomialTheorm/>
+    },
+    {
+      path  : "/introduction-to-computer-network",
+      element : <IntroductionCN/>
+    },
+    {
+      path  : "/network-types-and-topologies",
+      element : <NetworkType/>
+    },
+    {
+      path  : "/networking",
+      element : <NetworkingDevices/>
+    },
+    {
+      path  : "/devices-and-transmission-media",
+      element : <DevicesAndTransmission/>
+    },
+    {
+      path  : "/network-architecture",
+      element : <NetworkArchitecture/>
+    },
+    {
+      path  : "/reference-model-and-ip-addressing",
+      element : <ReferenceModel/>
+    },
+    {
+      path  : "/workgroup-computing",
+      element : <WorkgroupComputing/>
+    },
+    {
+      path  : "/network-security",
+      element : <NetworkSecurity/>
+    },
+    {
+      path  : "/introduction-to-contemporary-technology",
+      element : <IntroductionCT/>
+    },
+    {
+      path  : "/e-commerce",
+      element : <ECommerce/>
+    },
+    {
+      path  : "/e-governance",
+      element : <EGovernance/>
+    },
+    {
+      path  : "/cloud-computing-and-iot",
+      element : <CloudIOT/>
+    },
+    {
+      path  : "/artificial-intelligence",
+      element : <AI/>
+    },
+    {
+      path  : "/multimedia",
+      element : <Multimedia/>
+    },
+    {
+      path  : "/big-data",
+      element : <BigData/>
+    },
+    {
       path  : "/dashboard/physicsReview",
       element : <PhysicsReview/>
     },
     {
       path  : "/dashboard/chemistryReview",
       element : <ChemistryReview/>
+    },
+    {
+      path  : "/dashboard/cnReview",
+      element : <CNReview/>
+    },
+    {
+      path  : "/dashboard/ctReview",
+      element : <CTReview/>
     },
   ])
   const [isLogged, setIsLogged] = useState();

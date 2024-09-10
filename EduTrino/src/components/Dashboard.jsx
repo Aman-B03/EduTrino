@@ -35,23 +35,28 @@ const Dashboard = () => {
   },[])
 
 
-
+  const saveToLS = (value)=>{
+    localStorage.setItem("userStatus", value)
+    console.log(value, "THis is islogged")
+  }
 
   const logOut = () => {
     if (confirm("Are You sure to log Out 😒😒")) {
       localStorage.removeItem("token")
       value.setIsLogged(false)
+      saveToLS(false)
       navigate('/')
     }
   }
 
 
-  if (value.isLogged) {
+  // if (value.isLogged) {
+  if (localStorage.getItem("userStatus") == "true"){
 
     return (
 
       <div>
-
+        {console.log("Arigato tendayo Dashboard : ", value)}
         <Navbar />
         <div className="upperContent flex flex-col gap-0" data-aos="fade-up">
           <div className="personalInfo bg-[#44aba6] flex 650:flex-row 650:gap-0 gap-8 flex-col w-[93vw] mx-auto rounded-lg my-8 py-5 justify-between px-6">

@@ -11,6 +11,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 const Login = () => {
 
   const value = useContext(userState);
+  localStorage.setItem("userStatus", true)
   const navigate = useNavigate();
 
   const {

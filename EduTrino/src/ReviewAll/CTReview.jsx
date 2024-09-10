@@ -1,11 +1,8 @@
 import React from 'react'
-import SubjectContent from './SubjectContent'
+import Review from '../components/Review'
 
-
-const CT = () => {
-  return (
-    <div>
-      <SubjectContent subject = "Contemporary Technology" chapters = {[
+const CTReview = () => {
+    const chapters = [
         "Introduction to Contemporary Technology",
         "E-Commerce",
         "E-Governance",
@@ -13,9 +10,13 @@ const CT = () => {
         "Artificial Intelligence",
         "Multimedia",
         "Big Data"
-      ]} />
+    ]
+  return (
+    <div>
+        <Review subject = "CT" chapters = {chapters}/>
+     
     </div>
   )
 }
 
-export default CT
+export default CTReview
